@@ -52,50 +52,89 @@ namespace GUI {
             }
         }
 
-        private void Content(object sender, EventArgs e) {
-            SwitchForm(Status.Running);
-        }
         //private void BlockListener(int milliGap,Status blockStatus,GUI.Status sub) {
         //    while (sub.GetStatus() == blockStatus) {
         //        Sleep(milliGap);
         //    }
         //}
-        private void polling(object sender, EventArgs e) {
-            if (Issue.GetStatus() == Status.Main) {
-                this.Show();
-                //Issue = new Content(Size, Location);
-                //Issue.Hide();
+        private void Polling(object sender, EventArgs e) {
+            VEInter inter=null;
+            Status next; // if subform is on
+            switch (CurrentForm) {
+                case Status.Issue:
+                    inter = Issue;
+                    LastLoc = Issue.Location;break;
+                case Status.Appraisal:
+                    inter = app;
+                    LastLoc = app.Location;break;
+                default:
+                    // main
+                    return;
             }
-        }
-        private async void BlockListener(int milliGap,Status blockStatus,GUI.Status sub) {
-            while (sub.GetStatus() == blockStatus) {
-                Sleep(milliGap);
+            if (inter != null) {
+                next = inter.GetStatus();
+                if (next == Status.Main) {
+                    CurrentForm = Status.Main;
+                    Location = LastLoc;
+                    this.Show(); return;
+                }else if (next != inter.OnStatus()) {
+                    // jump to another sub form
+                    SwitchForm(next);
+                }
+
             }
         }
         private void SwitchForm(Status s) {
             this.Hide();
+            CurrentForm = s;
             switch (s) {
-                case Status.Running:
-                    if (Issue.IsDisposed) { Issue = new Content(Size, Location); }
+                case Status.Issue:
+                    if (Issue.IsDisposed) { Issue = new Content(); }
+                    Issue.Location=Location;
                     Issue.ToShow(s);break;
+                case Status.Appraisal:
+                    if (app.IsDisposed) { app = new Appraisal(); }
+                    app.Location = Location;
+                    app.ToShow(s);break;
+                case Status.Crops:
+
+                    break;
+                case Status.Running:
+                    break;
                 default:
                     break;
             }
         }
         public enum Status {
-            Running,Main,Crops,Appraisal
+            Running, // experimental status
+            Main, // main page
+            Crops, // anatomy
+            Appraisal, // 
+            Issue // case details
         };
         public void Sleep(int millisec) => System.Threading.Thread.Sleep(millisec);
         private Content Issue;
+        private Appraisal app;
+        private VEInter[] forms; // to think about
         private Timer timer;
+        private Point LastLoc;
+        private Status CurrentForm=Status.Main;
         private void MainLoad(object sender, EventArgs e) {
             // set QA pos
             // init Issue and so on
-            Issue = new Content(Size, Location);
+            Issue = new Content();
+            app = new Appraisal();
             timer = new Timer();
-            timer.Tick += polling;
+            timer.Tick += Polling;
             timer.Interval = 10;
             timer.Start();
+        }
+        private void Content(object sender, EventArgs e) {
+            SwitchForm(Status.Issue);
+        }
+
+        private void AppStart(object sender, EventArgs e) {
+            SwitchForm(Status.Appraisal);
         }
     }
 }

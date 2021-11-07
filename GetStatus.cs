@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GUI {
-    interface Status {
+    interface VEInter {
         MainForm.Status GetStatus();
+        MainForm.Status OnStatus();
         void ToShow(MainForm.Status st);
     }
 }
