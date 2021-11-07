@@ -46,8 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appraisal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Content.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crops.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crops.Designer.cs">
+      <DependentUpon>Crops.cs</DependentUpon>
     </Compile>
     <Compile Include="GetStatus.cs" />
     <Compile Include="MainForm.cs">
@@ -58,8 +67,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Appraisal.resx">
+      <DependentUpon>Appraisal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Content.resx">
       <DependentUpon>Content.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crops.resx">
+      <DependentUpon>Crops.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -92,6 +107,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analysis.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\content.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drug.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idop.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organ.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pathology.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\post-mortem.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tissue.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

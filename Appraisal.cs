@@ -3,21 +3,18 @@ using System.IO;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class Content : Form,IVEInter {
-        private Button RetMenu;
-        private Button Anomaly;
-        private TextBox CText;
+    public class Appraisal:Form,IVEInter {
         private FlowLayoutPanel MenuFlowLayoutPanel;
-        public Content() {
-            InitializeComponent();
-            this.CText.Text = Properties.Resources.content;
-            status = MainForm.Status.Issue;
+        private TextBox CText;
+        private Button RetMenu;
+        public Appraisal() {
+            InitializeComponent(); 
+            this.CText.Text = Properties.Resources.idop;
+            status = MainForm.Status.Appraisal;
         }
-
         private void InitializeComponent() {
             this.MenuFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.RetMenu = new System.Windows.Forms.Button();
-            this.Anomaly = new System.Windows.Forms.Button();
             this.CText = new System.Windows.Forms.TextBox();
             this.MenuFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -26,13 +23,12 @@ namespace GUI {
             // 
             this.MenuFlowLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.MenuFlowLayoutPanel.Controls.Add(this.RetMenu);
-            this.MenuFlowLayoutPanel.Controls.Add(this.Anomaly);
             this.MenuFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.MenuFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuFlowLayoutPanel.Name = "MenuFlowLayoutPanel";
             this.MenuFlowLayoutPanel.Size = new System.Drawing.Size(122, 411);
-            this.MenuFlowLayoutPanel.TabIndex = 1;
+            this.MenuFlowLayoutPanel.TabIndex = 2;
             // 
             // RetMenu
             // 
@@ -44,16 +40,6 @@ namespace GUI {
             this.RetMenu.UseVisualStyleBackColor = true;
             this.RetMenu.Click += new System.EventHandler(this.Return);
             // 
-            // Anomaly
-            // 
-            this.Anomaly.Location = new System.Drawing.Point(3, 49);
-            this.Anomaly.Name = "Anomaly";
-            this.Anomaly.Size = new System.Drawing.Size(111, 38);
-            this.Anomaly.TabIndex = 1;
-            this.Anomaly.Text = "尸体解剖";
-            this.Anomaly.UseVisualStyleBackColor = true;
-            this.Anomaly.Click += new System.EventHandler(this.JumpAnalyze);
-            // 
             // CText
             // 
             this.CText.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -63,25 +49,24 @@ namespace GUI {
             this.CText.Name = "CText";
             this.CText.ReadOnly = true;
             this.CText.Size = new System.Drawing.Size(342, 100);
-            this.CText.TabIndex = 2;
+            this.CText.TabIndex = 3;
             // 
-            // Content
+            // Appraisal
             // 
-            this.BackgroundImage = global::GUI.Properties.Resources.Fight;
+            this.BackgroundImage = global::GUI.Properties.Resources.Bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(464, 411);
             this.Controls.Add(this.CText);
             this.Controls.Add(this.MenuFlowLayoutPanel);
-            this.Name = "Content";
+            this.Name = "Appraisal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "案情资料";
+            this.Text = "鉴定意见";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAction);
             this.MenuFlowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         private void Return(object sender, EventArgs e) {
             ReturnProc(MainForm.Status.Main);
         }
@@ -103,11 +88,8 @@ namespace GUI {
             this.Show();
         }
 
-        public MainForm.Status OnStatus() =>MainForm.Status.Issue;
-        protected MainForm.Status status;
+        public MainForm.Status OnStatus() => MainForm.Status.Appraisal;
 
-        private void JumpAnalyze(object sender, EventArgs e) {
-            ReturnProc(MainForm.Status.Crops);
-        }
+        protected MainForm.Status status;
     }
 }

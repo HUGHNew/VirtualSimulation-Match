@@ -61,6 +61,17 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 尸体检验、组织检查、并结合毒物分析结果所见：死者两眼睑结膜有较多出血点。颜面部皮肤见多处小擦挫;下颌下皮肤见多处挫伤; 两侧肩峰和锁骨中段皮肤挫伤,均呈对称性分布;背部第2-4腰椎处皮肤挫伤;指、趾甲高度紫绀。尸体剖验见舌根部出血,呈紫红色突起,边界清楚,范围4*2*0.3cm。咽喉部粘膜、会厌及其周围组织水肿,会厌软骨表面及两侧梨状隐窝粘膜点片状出血。心底部外膜下点状出血。两肺胸膜面点状及小片状出血。组织学检查见舌根部粘膜下淋巴组织及舌肌纤维间可见广泛小片状出血,舌肌间质水肿;舌根部周围淋巴结高度淤血、灶性出血。心肌间质、肺呈片灶性出血。上述由于外界暴力使颈部过度伸展造成体位性窒息死亡。
+        ///经毒物检验,死者血液、尿液和胃内容物中均未检出常见药物、杀虫剂及毒鼠强成分,尿液中未检出吗啡和甲基苯丙胺等苯丙胺类兴奋剂成分,血液中未检出乙醇成分,故可排除上述毒(药)物中毒所致的死亡。
+        ///.
+        /// </summary>
+        internal static string analysis {
+            get {
+                return ResourceManager.GetString("analysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Bg {
@@ -71,12 +82,91 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 某年5月13日下午，李某（男，26岁）因不小心碰倒路边商贩张某贩卖的水果，而张某因赚钱无路，愤恨于心，借李某撒气，遂两人殴打起来，没几个回合李某便倒地不醒，救护车到时已停止呼吸。因张某否认罪行，其家属遂报警并要求尸体解剖查明死因。于李某死后2日进行尸体解剖。.
+        /// </summary>
+        internal static string content {
+            get {
+                return ResourceManager.GetString("content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 死者血液、尿液及胃内容物中均未检出常见药物、杀虫剂及毒鼠强成分。
+        ///死者尿液中未检出吗啡和甲基苯丙胺等苯丙胺类兴奋剂成分。
+        ///死者血液中未检出乙醇成分。
+        ///.
+        /// </summary>
+        internal static string drug {
+            get {
+                return ResourceManager.GetString("drug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Fight {
             get {
                 object obj = ResourceManager.GetObject("Fight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 根据尸体检验、组织检查、并结合毒物分析结果等综合分析：认为死者系外界暴力使颈部过度伸展造成体位性窒息死亡。.
+        /// </summary>
+        internal static string idop {
+            get {
+                return ResourceManager.GetString("idop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 脑：全脑重1486g，脑回、脑沟正常，未见挫伤、出血。
+        ///心：心重263g，心内外膜光滑，心底部外膜下点状出血；左右心室腔未见扩张，心肌成暗红色，质地中等；心脏各瓣膜光滑，未见赘生物，周径正常。
+        ///肺：左肺重452g，右肺重543g；双肺表面光滑，两侧胸肺面点状及小片状出血。
+        ///肝：重1296g，大小为25*19*12cm；表面光滑、成暗黄色，未见结节样改变。
+        ///脾：重115g，11*8*2cm；包膜光滑，表面呈暗红色。
+        ///肾：左肾重112g，9*6*2.5cm，右肾重122g，9*6*2cm；两肾包膜易剥离，表面光滑，呈暗红色。
+        ///胰：重110g，11*3*2cm；周围脂肪组织未见出血，表面光滑。
+        ///胃：胃粘膜光滑，未见溃疡及出血点。
+        ///.
+        /// </summary>
+        internal static string organ {
+            get {
+                return ResourceManager.GetString("organ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 死者系外界暴力使颈部过度伸展造成体位性窒息死亡。.
+        /// </summary>
+        internal static string pathology {
+            get {
+                return ResourceManager.GetString("pathology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 男性尸体，尸长169cm。发育正常，营养一般。
+        ///头面部：颜面部皮肤见多处小擦挫伤；下颌下皮肤见多处挫伤；双眼脸闭合，结膜处有较多出血点；口、鼻腔及外耳道无异物，口唇高度紫绀，黏膜有明显咬破痕迹；牙齿无松动及牙折。
+        ///颈项部：舌根部出血，呈紫色凸起，边界清楚，范围4*2*0.3cm；咽喉部黏膜、会厌及其周围组织水肿，会厌软骨表面及其两侧梨状隐窝，黏膜点片状出血；余未见异常变化及损伤。
+        ///胸腹部： 未见异常变化及损伤。
+        ///臀部、会阴部及肛门：未见异常变化及损伤。
+        ///背部及四肢：两侧肩峰和锁骨中段皮肤挫伤，均成对称性分布；背部第2-4腰椎处皮肤挫伤；趾、指甲高度紫绀。.
+        /// </summary>
+        internal static string post_mortem {
+            get {
+                return ResourceManager.GetString("post_mortem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 舌根部黏膜下淋巴组织及舌肌纤维间可见广泛小片状出血，舌肌间质水肿；舌根部周围淋巴结高度淤血、灶性出血。心肌间质、肺呈片灶状出血。.
+        /// </summary>
+        internal static string tissue {
+            get {
+                return ResourceManager.GetString("tissue", resourceCulture);
             }
         }
     }

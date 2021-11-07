@@ -63,6 +63,7 @@ namespace GUI {
             this.Anatomy.TabIndex = 1;
             this.Anatomy.Text = "尸体解剖";
             this.Anatomy.UseVisualStyleBackColor = true;
+            this.Anatomy.Click += new System.EventHandler(this.CropsJump);
             // 
             // Appraisal
             // 
@@ -72,6 +73,7 @@ namespace GUI {
             this.Appraisal.TabIndex = 2;
             this.Appraisal.Text = "鉴定意见";
             this.Appraisal.UseVisualStyleBackColor = true;
+            this.Appraisal.Click += new System.EventHandler(this.AppStart);
             // 
             // QA
             // 
@@ -79,7 +81,7 @@ namespace GUI {
             this.QA.Name = "QA";
             this.QA.Size = new System.Drawing.Size(230, 69);
             this.QA.TabIndex = 1;
-            this.QA.Text = "开始答题";
+            this.QA.Text = "开始实验";
             this.QA.UseVisualStyleBackColor = true;
             this.QA.Click += new System.EventHandler(this.QAEnter);
             // 
