@@ -3,14 +3,14 @@ using System.IO;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class Content : Form,VEInter {
+    public class Content : Form,IVEInter {
         private Button RetMenu;
         private Button Anomaly;
         private TextBox CText;
         private FlowLayoutPanel MenuFlowLayoutPanel;
         public Content() {
             InitializeComponent();
-            this.CText.Text = File.ReadAllText(Properties.Resources.content);
+            this.CText.Text = Properties.Resources.content;
             status = MainForm.Status.Issue;
         }
 
@@ -98,8 +98,8 @@ namespace GUI {
             return status;
         }
 
-        public void ToShow(MainForm.Status st) {
-            status = st;
+        public void ToShow() {
+            status = OnStatus();
             this.Show();
         }
 

@@ -63,6 +63,7 @@ namespace GUI {
             this.Anatomy.TabIndex = 1;
             this.Anatomy.Text = "尸体解剖";
             this.Anatomy.UseVisualStyleBackColor = true;
+            this.Anatomy.Click += new System.EventHandler(this.CropsJump);
             // 
             // Appraisal
             // 

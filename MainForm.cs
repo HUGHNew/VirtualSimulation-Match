@@ -58,7 +58,7 @@ namespace GUI {
         //    }
         //}
         private void Polling(object sender, EventArgs e) {
-            VEInter inter=null;
+            IVEInter inter=null;
             Status next; // if subform is on
             switch (CurrentForm) {
                 case Status.Issue:
@@ -67,6 +67,9 @@ namespace GUI {
                 case Status.Appraisal:
                     inter = app;
                     LastLoc = app.Location;break;
+                case Status.Crops:
+                    inter = crops;
+                    LastLoc = crops.Location;break;
                 default:
                     // main
                     return;
@@ -81,29 +84,29 @@ namespace GUI {
                     // jump to another sub form
                     SwitchForm(next);
                 }
-
             }
         }
         private void SwitchForm(Status s) {
             this.Hide();
             CurrentForm = s;
+            IVEInter form=null;
             switch (s) {
                 case Status.Issue:
                     if (Issue.IsDisposed) { Issue = new Content(); }
-                    Issue.Location=Location;
-                    Issue.ToShow(s);break;
+                    form =Issue; break;
                 case Status.Appraisal:
                     if (app.IsDisposed) { app = new Appraisal(); }
-                    app.Location = Location;
-                    app.ToShow(s);break;
+                    form=app; break;
                 case Status.Crops:
-
-                    break;
+                    if (app.IsDisposed) { app = new Appraisal(); }
+                    form = crops;break;
                 case Status.Running:
                     break;
                 default:
                     break;
             }
+            (form as Form).Location = Location;
+            form.ToShow();
         }
         public enum Status {
             Running, // experimental status
@@ -115,7 +118,8 @@ namespace GUI {
         public void Sleep(int millisec) => System.Threading.Thread.Sleep(millisec);
         private Content Issue;
         private Appraisal app;
-        private VEInter[] forms; // to think about
+        private Crops crops;
+        private IVEInter[] forms; // to think about
         private Timer timer;
         private Point LastLoc;
         private Status CurrentForm=Status.Main;
@@ -124,6 +128,7 @@ namespace GUI {
             // init Issue and so on
             Issue = new Content();
             app = new Appraisal();
+            crops = new Crops();
             timer = new Timer();
             timer.Tick += Polling;
             timer.Interval = 10;
@@ -135,6 +140,10 @@ namespace GUI {
 
         private void AppStart(object sender, EventArgs e) {
             SwitchForm(Status.Appraisal);
+        }
+
+        private void CropsJump(object sender, EventArgs e) {
+            SwitchForm(Status.Crops);
         }
     }
 }

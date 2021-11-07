@@ -3,13 +3,13 @@ using System.IO;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class Appraisal:Form,VEInter {
+    public class Appraisal:Form,IVEInter {
         private FlowLayoutPanel MenuFlowLayoutPanel;
         private TextBox CText;
         private Button RetMenu;
         public Appraisal() {
             InitializeComponent(); 
-            this.CText.Text = File.ReadAllText(Properties.Resources.idop);
+            this.CText.Text = Properties.Resources.idop;
             status = MainForm.Status.Appraisal;
         }
         private void InitializeComponent() {
@@ -83,8 +83,8 @@ namespace GUI {
             return status;
         }
 
-        public void ToShow(MainForm.Status st) {
-            status = st;
+        public void ToShow() {
+            status = OnStatus();
             this.Show();
         }
 

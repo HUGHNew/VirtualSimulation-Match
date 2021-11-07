@@ -5,9 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GUI {
-    interface VEInter {
+    internal interface IVEInter {
+        /// <summary>
+        /// get current status
+        /// </summary>
         MainForm.Status GetStatus();
+        /// <summary>
+        /// get the status if this form is on
+        /// </summary>
         MainForm.Status OnStatus();
-        void ToShow(MainForm.Status st);
+        /// <summary>
+        /// set form status and show itself
+        /// </summary>
+        void ToShow();
+        //[Obsolete]
+        //void ToShow(MainForm.Status st);
     }
 }
