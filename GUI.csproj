@@ -67,6 +67,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Question.Designer.cs">
+      <DependentUpon>Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RadioPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RadioPanel.Designer.cs">
+      <DependentUpon>RadioPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VariableRadioPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VariableRadioPanel.Designer.cs">
+      <DependentUpon>VariableRadioPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Appraisal.resx">
       <DependentUpon>Appraisal.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +107,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Question.resx">
+      <DependentUpon>Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadioPanel.resx">
+      <DependentUpon>RadioPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariableRadioPanel.resx">
+      <DependentUpon>VariableRadioPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,9 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\bg.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fight.png" />

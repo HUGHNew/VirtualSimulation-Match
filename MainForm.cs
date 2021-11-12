@@ -119,7 +119,7 @@ namespace GUI {
         private Content Issue;
         private Appraisal app;
         private Crops crops;
-        private IVEInter[] forms; // to think about
+        //private IVEInter[] forms; // to think about
         private Timer timer;
         private Point LastLoc;
         private Status CurrentForm=Status.Main;
