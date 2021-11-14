@@ -162,6 +162,36 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Q2_1 {
+            get {
+                object obj = ResourceManager.GetObject("Q2_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Q2_2 {
+            get {
+                object obj = ResourceManager.GetObject("Q2_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Q3 {
+            get {
+                object obj = ResourceManager.GetObject("Q3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 舌根部黏膜下淋巴组织及舌肌纤维间可见广泛小片状出血，舌肌间质水肿；舌根部周围淋巴结高度淤血、灶性出血。心肌间质、肺呈片灶状出血。.
         /// </summary>
         internal static string tissue {

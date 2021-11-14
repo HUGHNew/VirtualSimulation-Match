@@ -21,4 +21,8 @@ namespace GUI {
         //[Obsolete]
         //void ToShow(MainForm.Status st);
     }
+    internal interface IQTag {
+        void TextLoad();
+        void SetFile(string file);
+    }
 }

@@ -35,15 +35,16 @@ namespace GUI {
             this.RadioFlow.Name = "RadioFlow";
             this.RadioFlow.Size = new System.Drawing.Size(150, 150);
             this.RadioFlow.TabIndex = 0;
-            this.RadioFlow.Layout += new System.Windows.Forms.LayoutEventHandler(this.RadioPanel_Layout);
             // 
             // VariableRadioPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.RadioFlow);
             this.Name = "VariableRadioPanel";
-            this.Load += new System.EventHandler(this.RadioLoad);
+            this.Load += new System.EventHandler(this.Test);
+            this.Layout += new System.Windows.Forms.LayoutEventHandler(this.RadioPanel_Layout);
             this.ResumeLayout(false);
 
         }

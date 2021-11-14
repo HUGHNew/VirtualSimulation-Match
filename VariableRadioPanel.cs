@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace GUI {
     public partial class VariableRadioPanel : UserControl {
@@ -34,8 +30,8 @@ namespace GUI {
         [Browsable(true)]
         [Category("Radio")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [Description("Specifies the CSV file for Radio Buttons.")]
-        public int CorrectRadioItemIndex { get; set; } = 0;
+        [Description("Specifies the correct answer start with 1.")]
+        public uint CorrectRadioItemIndex { get; set; } = 0;
 
         protected override Padding DefaultPadding {
             get {
@@ -88,11 +84,12 @@ namespace GUI {
                 X += Xdelta + Xpad; Y += Ydelta + Ypad;
             }
         }
-        private void ButtonLoad() {
-            //if (RadioCSVFile == "") { RadioCSVFile = "./Resources/demo.csv"; }
-            string[] Texts = System.IO.File.ReadAllLines(RadioCSVFile);
-            Buttons = new RadioButton[Texts.Length];
+        private void ButtonLoad(string path) {
             char[] sep = { ',' };
+            string[] Texts = System.IO.File.ReadAllLines(path);
+            uint CorrectAnswer= Convert.ToUInt32(Texts[0]);
+            if (CorrectRadioItemIndex == 0) CorrectRadioItemIndex = CorrectAnswer;
+            Buttons = new RadioButton[Texts.Length-1];
             string CombineText(string[] text) {
                 if (text==null||text.Length == 0)
                     throw new ArgumentException("empty string is not accepted!");
@@ -100,23 +97,40 @@ namespace GUI {
                 else return text[0] + " : " + text[1];
             }
             for(int i = 0; i < Buttons.Length; ++i) {
-                string[] item=Texts[i].Split(sep,2);
-                Buttons[i].Text = CombineText(item);
-                Buttons[i].TabIndex = i;
-                Buttons[i].TabStop = true;
-                Buttons[i].UseVisualStyleBackColor = true;
+                string[] item=Texts[i+1].Split(sep,2);
+                Buttons[i] = new RadioButton {
+                    Text = CombineText(item),
+                    TabIndex = i,
+                    TabStop = true,
+                    UseVisualStyleBackColor = true
+                };
             }
         }
-        private void RadioLoad(object sender, EventArgs e) {
+        private void ButtonLoad() {ButtonLoad(RadioCSVFile);}
+        public void LoadContent(string path) {
             this.SuspendLayout();
             RadioFlow.SuspendLayout();
 
-            ButtonLoad();
+            ButtonLoad(path);
             RadioFlow.Controls.Clear();
             RadioFlow.Controls.AddRange(Buttons);
-            
+
             RadioFlow.ResumeLayout(false);
             this.ResumeLayout(false);
+            PerformLayout();
+        }
+        public void LoadContent() {
+            RadioCSVFile = 
+                RadioCSVFile == ""
+                ? DefaultRadioFile
+                : RadioCSVFile;
+            LoadContent(RadioCSVFile);
+        }
+        public const string demofile = "demo.csv";
+        public static string DefaultRadioFile => System.IO.Path.Combine(Application.StartupPath,"questions",demofile);
+
+        private void Test(object sender, EventArgs e) {
+            
         }
     }
 }

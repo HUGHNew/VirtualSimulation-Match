@@ -13,7 +13,8 @@ namespace GUI {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Question());
+            //Application.Run(new MainForm());
+            Application.Run(new QuestionBoard());
             //Application.Run(new Crops());
         }
     }
