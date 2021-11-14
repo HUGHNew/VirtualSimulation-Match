@@ -45,6 +45,10 @@ namespace GUI {
             this.ResumeLayout(true);
         }
 
+        public override bool IsCorrect() {
+            throw new NotImplementedException();
+        }
+
         protected RadioButton[] Buttons;
     }
 }

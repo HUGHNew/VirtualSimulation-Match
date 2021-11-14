@@ -72,6 +72,21 @@ namespace GUI {
             }
         }
         protected void ButtonLoad() { ButtonLoad(ButtonCSVFile); }
+        protected void Initialization() {
+            SuspendLayout();
+
+            BackColor = Color.Transparent;
+            Dock = DockStyle.Fill;
+
+            Layout += new LayoutEventHandler(this.ButtonsPanel_Layout);
+
+            ResumeLayout(false);
+        }
+        public VariableBasePanel() {
+            Initialization();
+        }
+        protected UInt64 Answer=0;
+        abstract public bool IsCorrect();
         abstract protected void ButtonLoad(string path);
         abstract public void LoadContent(string path);
     }

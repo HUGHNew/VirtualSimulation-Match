@@ -14,12 +14,13 @@ namespace GUI {
             InitializeComponent();
         }
         private const uint MaxIdx = 1;
-        private readonly VariableRadioPanel[] Options=new VariableRadioPanel[MaxIdx];
+        private readonly VariableBasePanel[] Options=new VariableBasePanel[MaxIdx];
         private readonly IQTag[] Themes=new IQTag[MaxIdx];
         private readonly IQTag EmptyTag = new Q1();
         private readonly Control[] ThemeControl= new Control[3];
         private uint Index = 0;
         private MainForm.Status status;
+        // copy with the flash problem
         protected override CreateParams CreateParams {
             get {
                 CreateParams cp = base.CreateParams;
@@ -47,7 +48,8 @@ namespace GUI {
                 (Themes[i] as UserControl).Dock = DockStyle.Fill;
                 Themes[i].SetFile($"questions/Q{i+1}desc.txt");
                 Themes[i].TextLoad();
-                Options[i] = new VariableRadioPanel {
+                // todo : need to judge which panel to use
+                Options[i] = new VariableSelectPanel {
                     FlowDirection = FlowDirection.LeftToRight,
                     Dock = DockStyle.Fill
                 };

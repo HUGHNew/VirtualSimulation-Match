@@ -11,7 +11,7 @@ namespace GUI {
         [Browsable(true)]
         [Category("Buttons")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [Description("Specifies the correct answer start with 1.")]
+        [Description("Specifies the correct answers start with 1.")]
         public uint[] CorrectButtonItemIndex { get; set; }
         protected override void ButtonLoad(string path) {
             char[] sep = { ',' };
@@ -41,6 +41,10 @@ namespace GUI {
             Controls.Clear();
             Controls.AddRange(Buttons);
             ResumeLayout(true);
+        }
+
+        public override bool IsCorrect() {
+            throw new NotImplementedException();
         }
 
         protected CheckBox[] Buttons;
