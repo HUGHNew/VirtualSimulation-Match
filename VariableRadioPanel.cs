@@ -5,10 +5,11 @@ using System.Windows.Forms;
 using System.Linq;
 
 namespace GUI {
-    public partial class VariableRadioPanel : UserControl {
+    public partial class VariableRadioPanel : UserControl,IVariableOptionPanel {
         public VariableRadioPanel() {
             InitializeComponent();
         }
+        #region Browsable Properties
         [Browsable(true)]
         [Category("Layout")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -32,7 +33,7 @@ namespace GUI {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Description("Specifies the correct answer start with 1.")]
         public uint CorrectRadioItemIndex { get; set; } = 0;
-
+        #endregion
         protected override Padding DefaultPadding {
             get {
                 switch (FlowDirection) {

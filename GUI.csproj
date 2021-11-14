@@ -85,11 +85,20 @@
     <Compile Include="RadioPanel.Designer.cs">
       <DependentUpon>RadioPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="VariableBasePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VariableCheckPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VariableRadioPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="VariableRadioPanel.Designer.cs">
       <DependentUpon>VariableRadioPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VariableSelectPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Appraisal.resx">
       <DependentUpon>Appraisal.cs</DependentUpon>

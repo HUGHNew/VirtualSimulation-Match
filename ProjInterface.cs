@@ -25,4 +25,7 @@ namespace GUI {
         void TextLoad();
         void SetFile(string file);
     }
+    internal interface IVariableOptionPanel {
+        void LoadContent(string path);
+    }
 }
