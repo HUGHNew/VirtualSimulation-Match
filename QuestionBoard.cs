@@ -15,8 +15,8 @@ namespace GUI {
         }
         private const uint MaxIdx = 1;
         private readonly VariableBasePanel[] Options=new VariableBasePanel[MaxIdx];
-        private readonly IQTag[] Themes=new IQTag[MaxIdx];
-        private readonly IQTag EmptyTag = new Q1();
+        private readonly QDesc[] Themes=new QDesc[MaxIdx];
+        private readonly QDesc EmptyTag = new QDesc();
         private readonly Control[] ThemeControl= new Control[3];
         private uint Index = 0;
         private MainForm.Status status;
@@ -40,20 +40,20 @@ namespace GUI {
         #endregion
 
         private void QuestionBoard_Shown(object sender, EventArgs e) {
-            Themes[0] = new Q1();
+            Themes[0] = new QDesc();
             ThemeControl[0] = Themes[0] as UserControl;
             ThemeControl[1] = Options[0];
             ThemeControl[2] = SubmitBtn;
             for (int i = 0; i < MaxIdx; ++i) {
-                (Themes[i] as UserControl).Dock = DockStyle.Fill;
-                Themes[i].SetFile($"questions/Q{i+1}desc.txt");
-                Themes[i].TextLoad();
-                // todo : need to judge which panel to use
-                Options[i] = new VariableSelectPanel {
-                    FlowDirection = FlowDirection.LeftToRight,
-                    Dock = DockStyle.Fill
-                };
-                Options[i].LoadContent($"questions/Q{i+1}.csv");
+                Themes[i].Dock = DockStyle.Fill;
+                Themes[i].TryLoadRtf($"questions/Q{i + 1}desc.rtf");
+                //Themes[i].SetFile($"questions/Q{i+1}desc.txt");
+                //Themes[i].TextLoad();
+
+                string csv = $"questions/Q{i + 1}.csv";
+                Options[i] = VariablePanelFactory.Create(csv);
+                Options[i].FlowDirection = FlowDirection.LeftToRight;
+                Options[i].LoadContent(csv);
             }
             MoveToNext();
         }

@@ -23,6 +23,7 @@ namespace GUI {
                 Y += LHeight;
             }
         }
+        #region Seems Useless?
         [Browsable(true)]
         [Category("Radio")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -35,5 +36,6 @@ namespace GUI {
         public void SetFile(string file) {
             TextFile = file;
         }
+        #endregion
     }
 }

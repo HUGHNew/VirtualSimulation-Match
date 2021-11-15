@@ -73,6 +73,12 @@
     <Compile Include="Q1.Designer.cs">
       <DependentUpon>Q1.cs</DependentUpon>
     </Compile>
+    <Compile Include="QDesc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QDesc.Designer.cs">
+      <DependentUpon>QDesc.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,7 @@
     <Compile Include="VariableCheckPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="VariablePanelFactory.cs" />
     <Compile Include="VariableRadioPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="Q1.resx">
       <DependentUpon>Q1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDesc.resx">
+      <DependentUpon>QDesc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionBoard.resx">
       <DependentUpon>QuestionBoard.cs</DependentUpon>

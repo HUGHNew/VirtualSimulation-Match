@@ -1,6 +1,6 @@
 ﻿
 namespace GUI {
-    partial class Q1 {
+    partial class QDesc {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -25,39 +25,40 @@ namespace GUI {
         /// </summary>
         private void InitializeComponent() {
             this.Panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.Title = new System.Windows.Forms.Label();
+            this.RichTextBox = new System.Windows.Forms.RichTextBox();
             this.Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel
             // 
             this.Panel.BackColor = System.Drawing.Color.Transparent;
-            this.Panel.Controls.Add(this.Title);
+            this.Panel.Controls.Add(this.RichTextBox);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.Panel.Location = new System.Drawing.Point(0, 0);
             this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(593, 386);
+            this.Panel.Size = new System.Drawing.Size(544, 400);
             this.Panel.TabIndex = 0;
-            this.Panel.Layout += new System.Windows.Forms.LayoutEventHandler(this.IsometricLayout);
             // 
-            // Title
+            // RichTextBox
             // 
-            this.Title.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Title.Location = new System.Drawing.Point(3, 331);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(587, 55);
-            this.Title.TabIndex = 0;
-            this.Title.Text = "1. 根据哪项检查结果最能排除中毒死亡";
-            this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.RichTextBox.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RichTextBox.Location = new System.Drawing.Point(3, 150);
+            this.RichTextBox.Name = "RichTextBox";
+            this.RichTextBox.ReadOnly = true;
+            this.RichTextBox.Size = new System.Drawing.Size(538, 247);
+            this.RichTextBox.TabIndex = 1;
+            this.RichTextBox.Text = "";
             // 
-            // Q1
+            // QDesc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Panel);
-            this.Name = "Q1";
-            this.Size = new System.Drawing.Size(593, 386);
+            this.Name = "QDesc";
+            this.Size = new System.Drawing.Size(544, 400);
+            this.Layout += new System.Windows.Forms.LayoutEventHandler(this.IsometricLayout);
             this.Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -66,6 +67,6 @@ namespace GUI {
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel Panel;
-        private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.RichTextBox RichTextBox;
     }
 }
