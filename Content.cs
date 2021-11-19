@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class Content : Form,IVEInter {
+    public class Content : Form, IVEInter {
         private Button RetMenu;
         private Button Anomaly;
         private TextBox CText;
@@ -103,7 +102,7 @@ namespace GUI {
             this.Show();
         }
 
-        public MainForm.Status OnStatus() =>MainForm.Status.Issue;
+        public MainForm.Status OnStatus() => MainForm.Status.Issue;
         protected MainForm.Status status;
 
         private void JumpAnalyze(object sender, EventArgs e) {

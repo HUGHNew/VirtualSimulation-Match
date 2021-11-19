@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GUI {
+﻿namespace GUI {
     internal interface IVEInter {
         /// <summary>
         /// get current status
@@ -20,5 +14,14 @@ namespace GUI {
         void ToShow();
         //[Obsolete]
         //void ToShow(MainForm.Status st);
+    }
+    internal interface IQTag {
+        void TextLoad();
+        void SetFile(string file);
+    }
+    internal interface IVariableOptionPanel {
+        void LoadContent(string path);
+        bool IsCorrect();
+        void ButtonLoad(string path);
     }
 }
