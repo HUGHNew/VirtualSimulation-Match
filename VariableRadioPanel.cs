@@ -2,11 +2,10 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace GUI {
     [Obsolete]
-    public partial class VariableRadioPanel : UserControl{
+    public partial class VariableRadioPanel : UserControl {
         public VariableRadioPanel() {
             InitializeComponent();
         }
@@ -89,17 +88,17 @@ namespace GUI {
         private void ButtonLoad(string path) {
             char[] sep = { ',' };
             string[] Texts = System.IO.File.ReadAllLines(path);
-            uint CorrectAnswer= Convert.ToUInt32(Texts[0]);
+            uint CorrectAnswer = Convert.ToUInt32(Texts[0]);
             if (CorrectRadioItemIndex == 0) CorrectRadioItemIndex = CorrectAnswer;
-            Buttons = new RadioButton[Texts.Length-1];
+            Buttons = new RadioButton[Texts.Length - 1];
             string CombineText(string[] text) {
-                if (text==null||text.Length == 0)
+                if (text == null || text.Length == 0)
                     throw new ArgumentException("empty string is not accepted!");
                 else if (text.Length == 1) return text[0];
                 else return text[0] + " : " + text[1];
             }
-            for(int i = 0; i < Buttons.Length; ++i) {
-                string[] item=Texts[i+1].Split(sep,2);
+            for (int i = 0; i < Buttons.Length; ++i) {
+                string[] item = Texts[i + 1].Split(sep, 2);
                 Buttons[i] = new RadioButton {
                     Text = CombineText(item),
                     TabIndex = i,
@@ -108,7 +107,7 @@ namespace GUI {
                 };
             }
         }
-        private void ButtonLoad() {ButtonLoad(RadioCSVFile);}
+        private void ButtonLoad() { ButtonLoad(RadioCSVFile); }
         public void LoadContent(string path) {
             this.SuspendLayout();
             RadioFlow.SuspendLayout();
@@ -122,17 +121,17 @@ namespace GUI {
             PerformLayout();
         }
         public void LoadContent() {
-            RadioCSVFile = 
+            RadioCSVFile =
                 RadioCSVFile == ""
                 ? DefaultRadioFile
                 : RadioCSVFile;
             LoadContent(RadioCSVFile);
         }
         public const string demofile = "demo.csv";
-        public static string DefaultRadioFile => System.IO.Path.Combine(Application.StartupPath,"questions",demofile);
+        public static string DefaultRadioFile => System.IO.Path.Combine(Application.StartupPath, "questions", demofile);
 
         private void Test(object sender, EventArgs e) {
-            
+
         }
     }
 }

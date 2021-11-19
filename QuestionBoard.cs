@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
-    public partial class QuestionBoard : Form,IVEInter {
+    public partial class QuestionBoard : Form, IVEInter {
         public QuestionBoard() {
             InitializeComponent();
         }
         private const uint MaxIdx = 5;
-        private readonly VariableBasePanel[] Options=new VariableBasePanel[MaxIdx];
-        private readonly QDesc[] Themes=new QDesc[MaxIdx];
+        private readonly VariableBasePanel[] Options = new VariableBasePanel[MaxIdx];
+        private readonly QDesc[] Themes = new QDesc[MaxIdx];
         private readonly QDesc EmptyTag = new QDesc(Properties.Resources.finishExam);
-        private readonly Control[] ThemeControl= new Control[3];
+        private readonly Control[] ThemeControl = new Control[3];
         private uint Index = 0;
         private MainForm.Status status;
         // copy with the flash problem
@@ -49,12 +45,12 @@ namespace GUI {
         private Label NFLabelGen(string text) {
             return new Label {
                 Text = text,
-                TextAlign=ContentAlignment.MiddleCenter,
-                BackColor=Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor = Color.Transparent,
                 //Font=dFont,
             };
         }
-        
+
         private void QuestionBoard_Shown(object sender, EventArgs e) {
             for (int i = 0; i < MaxIdx; ++i) {
                 Themes[i] = new QDesc { Dock = DockStyle.Fill };
@@ -75,15 +71,15 @@ namespace GUI {
         /// </summary>
         private bool SubmitStatus = false;
         private void SubmitBtn_Click(object sender, EventArgs e) {
-            SubmitBtn.Text=SubmitStatus?"确定":"下一题";
+            SubmitBtn.Text = SubmitStatus ? "确定" : "下一题";
             if (SubmitStatus) {
                 ++Index;
                 MoveToNext();
-            } else if(Index < MaxIdx) {
+            } else if (Index < MaxIdx) {
                 if (Options[Index].IsCorrect()) {
                     MessageBox.Show("答案正确");
                 } else {
-                    MessageBox.Show("正确答案为："+Options[Index].GetAnswers().Select(it=>(char)(it-1+'A')).ToArrayString());
+                    MessageBox.Show("正确答案为：" + Options[Index].GetAnswers().Select(it => (char)(it - 1 + 'A')).ToArrayString());
                 }
             }
             if (Index > MaxIdx) {

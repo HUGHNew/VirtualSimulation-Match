@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
@@ -48,12 +45,13 @@ namespace GUI {
             int idx = 0, max = CorrectButtonItemIndex.Length;
             if (Buttons.Count(it => it.Checked) != max) return false;// check count
             int[] SelectItems = new int[max];
-            for(int i = 0; i < Buttons.Length; ++i) {
-                if (Buttons[i].Checked 
-                    && i + 1 != CorrectButtonItemIndex[idx++]) { 
+            for (int i = 0; i < Buttons.Length; ++i) {
+                if (Buttons[i].Checked
+                    && i + 1 != CorrectButtonItemIndex[idx++]) {
                     return false;
                 }
-            }return true;
+            }
+            return true;
         }
         public override uint[] GetAnswers() => CorrectButtonItemIndex;
 

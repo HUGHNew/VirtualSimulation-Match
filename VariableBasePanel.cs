@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class VariableBasePanel:FlowLayoutPanel {
+    public class VariableBasePanel : FlowLayoutPanel {
         #region Browsable Properties
         [Browsable(true)]
         [Category("Layout")]
@@ -32,7 +32,7 @@ namespace GUI {
                 }
             }
         }
-        
+
         protected void ButtonsPanel_Layout(object sender, LayoutEventArgs e) {
             int Xdelta = 0, Ydelta = 0, BWidth = 0, BHeight = 0;
             int Xpad = Padding.Left + Padding.Right, Ypad = Padding.Top + Padding.Bottom;

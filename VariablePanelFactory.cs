@@ -3,8 +3,8 @@
         public static VariableBasePanel Create(string AnswerFile) {
             char[] sep = { ',' };
             VariableBasePanel Base;
-            string ca=System.IO.File.ReadAllLines(AnswerFile)[0];
-            string[] answer=ca.Split(sep);
+            string ca = System.IO.File.ReadAllLines(AnswerFile)[0];
+            string[] answer = ca.Split(sep);
             if (answer.Length == 1) {
                 Base = new VariableSelectPanel();
             } else {

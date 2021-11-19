@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace GUI {
-    public class VariableSelectPanel : VariableBasePanel,IVariableOptionPanel {
+    public class VariableSelectPanel : VariableBasePanel, IVariableOptionPanel {
         [Browsable(true)]
         [Category("Buttons")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -46,10 +42,11 @@ namespace GUI {
         }
 
         public override bool IsCorrect() {
-            for(int i = 0; i < Buttons.Length; ++i) {
+            for (int i = 0; i < Buttons.Length; ++i) {
                 if (Buttons[i].Checked)
                     return i + 1 == CorrectButtonItemIndex;
-            }return false;
+            }
+            return false;
         }
         public override uint[] GetAnswers() => new uint[1] { CorrectButtonItemIndex };
         protected RadioButton[] Buttons;

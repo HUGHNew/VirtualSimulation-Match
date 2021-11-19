@@ -1,14 +1,13 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class Appraisal:Form,IVEInter {
+    public class Appraisal : Form, IVEInter {
         private FlowLayoutPanel MenuFlowLayoutPanel;
         private TextBox CText;
         private Button RetMenu;
         public Appraisal() {
-            InitializeComponent(); 
+            InitializeComponent();
             this.CText.Text = Properties.Resources.idop;
             status = MainForm.Status.Appraisal;
         }

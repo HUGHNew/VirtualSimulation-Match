@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
@@ -34,12 +29,12 @@ namespace GUI {
                 LoadFile(path);
             } else {
                 char[] sep = { '.' };
-                RichTextBox.Text = NewLine(5)+File.ReadAllText(path.Split(sep)[0] + ".txt");
+                RichTextBox.Text = NewLine(5) + File.ReadAllText(path.Split(sep)[0] + ".txt");
                 //LoadU8Plain(path.Split(sep)[0]+".txt");
                 //RichTextBox.LoadFile(path.Split(sep)[0] + ".txt");
             }
         }
-        public void LoadFile(string path, RichTextBoxStreamType Type= RichTextBoxStreamType.RichText) {
+        public void LoadFile(string path, RichTextBoxStreamType Type = RichTextBoxStreamType.RichText) {
             RichTextBox.LoadFile(path, Type);
         }
         public void LoadU8Plain(string path) {
@@ -55,8 +50,8 @@ namespace GUI {
         private void IsometricLayout(object sender, LayoutEventArgs e) {
             int RichBoxHeight = (int)(Height * 0.8);
             RichTextBox.Size = new Size(Width, RichBoxHeight);
-            RichTextBox.Location = 
-                new Point(Location.X,Location.Y+Height-RichBoxHeight);
+            RichTextBox.Location =
+                new Point(Location.X, Location.Y + Height - RichBoxHeight);
             //int LHeight = Height / Controls.Count;
             //int Y = Location.Y;
             //foreach (Control it in Controls) {
