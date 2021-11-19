@@ -40,16 +40,7 @@ namespace GUI {
         }
 
         private void QAEnter(object sender, EventArgs e) {
-
-        }
-        private void MainVisible(bool hide) {
-            if (hide) {
-                MainButtonFlowPanel.Hide();
-                QA.Hide();
-            } else {
-                MainButtonFlowPanel.Show();
-                QA.Show();
-            }
+            SwitchForm(Status.Running);
         }
 
         //private void BlockListener(int milliGap,Status blockStatus,GUI.Status sub) {
@@ -57,22 +48,34 @@ namespace GUI {
         //        Sleep(milliGap);
         //    }
         //}
-        private void Polling(object sender, EventArgs e) {
-            IVEInter inter=null;
-            Status next; // if subform is on
-            switch (CurrentForm) {
+        
+        /// <param name="need_status"></param>
+        /// <returns>the form relevant to status or new one if disposed
+        /// null if it's Main
+        /// </returns>
+        private IVEInter GetAvailableForm(Status need_status) {
+            switch (need_status) {
                 case Status.Issue:
-                    inter = Issue;
-                    LastLoc = Issue.Location;break;
+                    if (Issue.IsDisposed) { Issue = new Content(); }
+                    return Issue;
                 case Status.Appraisal:
-                    inter = app;
-                    LastLoc = app.Location;break;
+                    if (app.IsDisposed) { app = new Appraisal(); }
+                    return app;
                 case Status.Crops:
-                    inter = crops;
-                    LastLoc = crops.Location;break;
+                    if (app.IsDisposed) { app = new Appraisal(); }
+                    return crops;
+                case Status.Running:
+                    if (board.IsDisposed) { board = new QuestionBoard(); }
+                    return board;
                 default:
-                    // main
-                    return;
+                    return null;
+            }
+        }
+        private void Polling(object sender, EventArgs e) {
+            Status next; // if subform is on
+            IVEInter inter=GetAvailableForm(CurrentForm);
+            if (inter != null) {
+                LastLoc = (inter as Form).Location;
             }
             if (inter != null) {
                 next = inter.GetStatus();
@@ -81,6 +84,8 @@ namespace GUI {
                     Location = LastLoc;
                     this.Show(); return;
                 }else if (next != inter.OnStatus()) {
+                    // this form may be disposed
+                    GetAvailableForm(next);
                     // jump to another sub form
                     SwitchForm(next);
                 }
@@ -89,24 +94,11 @@ namespace GUI {
         private void SwitchForm(Status s) {
             this.Hide();
             CurrentForm = s;
-            IVEInter form=null;
-            switch (s) {
-                case Status.Issue:
-                    if (Issue.IsDisposed) { Issue = new Content(); }
-                    form =Issue; break;
-                case Status.Appraisal:
-                    if (app.IsDisposed) { app = new Appraisal(); }
-                    form=app; break;
-                case Status.Crops:
-                    if (app.IsDisposed) { app = new Appraisal(); }
-                    form = crops;break;
-                case Status.Running:
-                    break;
-                default:
-                    break;
+            IVEInter form= GetAvailableForm(s);
+            if (form != null) {
+                form.ToShow();
+                (form as Form).Location = Location;
             }
-            (form as Form).Location = Location;
-            form.ToShow();
         }
         public enum Status {
             Running, // experimental status
@@ -119,6 +111,7 @@ namespace GUI {
         private Content Issue;
         private Appraisal app;
         private Crops crops;
+        private QuestionBoard board;
         //private IVEInter[] forms; // to think about
         private Timer timer;
         private Point LastLoc;
@@ -129,6 +122,7 @@ namespace GUI {
             Issue = new Content();
             app = new Appraisal();
             crops = new Crops();
+            board = new QuestionBoard();
             timer = new Timer();
             timer.Tick += Polling;
             timer.Interval = 10;

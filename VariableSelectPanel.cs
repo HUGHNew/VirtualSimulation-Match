@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace GUI {
-    public class VariableSelectPanel : VariableBasePanel {
+    public class VariableSelectPanel : VariableBasePanel,IVariableOptionPanel {
         [Browsable(true)]
         [Category("Buttons")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Description("Specifies the correct answer start with 1.")]
         public uint CorrectButtonItemIndex { get; set; } = 0;
-        protected override void ButtonLoad(string path) {
+        public void ButtonLoad(string path) {
             char[] sep = { ',' };
             string[] Texts = System.IO.File.ReadAllLines(path);
             uint CorrectAnswer = Convert.ToUInt32(Texts[0]);
@@ -46,9 +46,12 @@ namespace GUI {
         }
 
         public override bool IsCorrect() {
-            throw new NotImplementedException();
+            for(int i = 0; i < Buttons.Length; ++i) {
+                if (Buttons[i].Checked)
+                    return i + 1 == CorrectButtonItemIndex;
+            }return false;
         }
-
+        public override uint[] GetAnswers() => new uint[1] { CorrectButtonItemIndex };
         protected RadioButton[] Buttons;
     }
 }

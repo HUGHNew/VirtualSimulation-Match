@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
@@ -13,8 +10,8 @@ namespace GUI {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new QuestionBoard());
+            Application.Run(new MainForm());
+            //Application.Run(new QuestionBoard());
             //Application.Run(new Crops());
         }
     }

@@ -27,5 +27,7 @@ namespace GUI {
     }
     internal interface IVariableOptionPanel {
         void LoadContent(string path);
+        bool IsCorrect();
+        void ButtonLoad(string path);
     }
 }

@@ -89,31 +89,41 @@ namespace GUI {
             this.MenuFlow.Controls.Add(this.ReturnBtn);
             this.MenuFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuFlow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.MenuFlow.Location = new System.Drawing.Point(3, 3);
+            this.MenuFlow.Location = new System.Drawing.Point(0, 0);
+            this.MenuFlow.Margin = new System.Windows.Forms.Padding(0);
             this.MenuFlow.Name = "MenuFlow";
-            this.MenuFlow.Size = new System.Drawing.Size(114, 444);
+            this.MenuFlow.Size = new System.Drawing.Size(120, 450);
             this.MenuFlow.TabIndex = 1;
+            this.MenuFlow.Layout += new System.Windows.Forms.LayoutEventHandler(this.Menu_Layout);
             // 
             // ContentBtn
             // 
+            this.ContentBtn.FlatAppearance.BorderSize = 0;
+            this.ContentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ContentBtn.Location = new System.Drawing.Point(3, 3);
             this.ContentBtn.Name = "ContentBtn";
             this.ContentBtn.Size = new System.Drawing.Size(75, 23);
             this.ContentBtn.TabIndex = 0;
             this.ContentBtn.Text = "案情资料";
             this.ContentBtn.UseVisualStyleBackColor = true;
+            this.ContentBtn.Click += new System.EventHandler(this.JumpContent);
             // 
             // CropCheckBtn
             // 
+            this.CropCheckBtn.FlatAppearance.BorderSize = 0;
+            this.CropCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CropCheckBtn.Location = new System.Drawing.Point(3, 32);
             this.CropCheckBtn.Name = "CropCheckBtn";
             this.CropCheckBtn.Size = new System.Drawing.Size(75, 23);
             this.CropCheckBtn.TabIndex = 1;
             this.CropCheckBtn.Text = "尸体检查";
             this.CropCheckBtn.UseVisualStyleBackColor = true;
+            this.CropCheckBtn.Click += new System.EventHandler(this.JumpCrops);
             // 
             // QuestionBtn
             // 
+            this.QuestionBtn.FlatAppearance.BorderSize = 0;
+            this.QuestionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.QuestionBtn.Location = new System.Drawing.Point(3, 61);
             this.QuestionBtn.Name = "QuestionBtn";
             this.QuestionBtn.Size = new System.Drawing.Size(75, 23);
@@ -123,12 +133,14 @@ namespace GUI {
             // 
             // ReturnBtn
             // 
-            this.ReturnBtn.Location = new System.Drawing.Point(3, 90);
+            this.ReturnBtn.Location = new System.Drawing.Point(0, 87);
+            this.ReturnBtn.Margin = new System.Windows.Forms.Padding(0);
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(75, 23);
             this.ReturnBtn.TabIndex = 3;
             this.ReturnBtn.Text = "返回主页";
             this.ReturnBtn.UseVisualStyleBackColor = true;
+            this.ReturnBtn.Click += new System.EventHandler(this.BtnReturnMain);
             // 
             // QuestionBoard
             // 
@@ -138,6 +150,7 @@ namespace GUI {
             this.Controls.Add(this.MainTable);
             this.Name = "QuestionBoard";
             this.Text = "体位性窒息法医学鉴定虚拟仿真实验";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAction);
             this.Shown += new System.EventHandler(this.QuestionBoard_Shown);
             this.MainTable.ResumeLayout(false);
             this.ThemeTable.ResumeLayout(false);

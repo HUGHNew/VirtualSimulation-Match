@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
-    public abstract class VariableBasePanel:FlowLayoutPanel,IVariableOptionPanel {
+    public class VariableBasePanel:FlowLayoutPanel {
         #region Browsable Properties
         [Browsable(true)]
         [Category("Layout")]
@@ -71,7 +67,7 @@ namespace GUI {
                 X += Xdelta + Xpad; Y += Ydelta + Ypad;
             }
         }
-        protected void ButtonLoad() { ButtonLoad(ButtonCSVFile); }
+        //protected void ButtonLoad() { ButtonLoad(ButtonCSVFile); }
         protected void Initialization() {
             SuspendLayout();
 
@@ -85,9 +81,12 @@ namespace GUI {
         public VariableBasePanel() {
             Initialization();
         }
-        protected UInt64 Answer=0;
-        abstract public bool IsCorrect();
-        abstract protected void ButtonLoad(string path);
-        abstract public void LoadContent(string path);
+        public virtual void LoadContent(string path) {
+            throw new NotImplementedException("This class should be an abstract one but not due to UserControl can't inherit an abstract base class");
+        }
+        public virtual bool IsCorrect() { return false; }
+        public virtual uint[] GetAnswers() {
+            throw new NotImplementedException("This class should be an abstract one but not due to UserControl can't inherit an abstract base class");
+        }
     }
 }

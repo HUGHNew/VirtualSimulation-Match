@@ -67,12 +67,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Q1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Q1.Designer.cs">
-      <DependentUpon>Q1.cs</DependentUpon>
-    </Compile>
     <Compile Include="QDesc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,12 +79,7 @@
     <Compile Include="QuestionBoard.Designer.cs">
       <DependentUpon>QuestionBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="RadioPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RadioPanel.Designer.cs">
-      <DependentUpon>RadioPanel.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Utility.cs" />
     <Compile Include="VariableBasePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -129,17 +118,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Q1.resx">
-      <DependentUpon>Q1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QDesc.resx">
       <DependentUpon>QDesc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionBoard.resx">
       <DependentUpon>QuestionBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RadioPanel.resx">
-      <DependentUpon>RadioPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VariableRadioPanel.resx">
       <DependentUpon>VariableRadioPanel.cs</DependentUpon>
@@ -195,6 +178,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Q3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\finishExam.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

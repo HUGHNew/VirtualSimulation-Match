@@ -113,6 +113,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 恭喜你完成所有题目.
+        /// </summary>
+        internal static string finishExam {
+            get {
+                return ResourceManager.GetString("finishExam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 根据尸体检验、组织检查、并结合毒物分析结果等综合分析：认为死者系外界暴力使颈部过度伸展造成体位性窒息死亡。.
         /// </summary>
         internal static string idop {

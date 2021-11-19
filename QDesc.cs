@@ -10,17 +10,25 @@ using System.Windows.Forms;
 
 namespace GUI {
     public partial class QDesc : UserControl {
-        public QDesc() {
+        public void Initialization() {
             InitializeComponent();
             RichTextBox.BackColor = Color.FromArgb(186, 228, 226);
             RichTextBox.SelectionAlignment = HorizontalAlignment.Center;
         }
-        public static string NewLine(int count) {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder(count);
-            for(int i=0;i<count;++i)
-                sb.Append('\n');
-            return sb.ToString();
+        public QDesc() {
+            Initialization();
         }
+        public QDesc(string content) {
+            Initialization();
+            RichTextBox.Text = NewLine(5) + content;
+        }
+        public static string NewLine(int count) {
+            return new String('\n', count);
+        }
+        /// <summary>
+        /// load specific path if exists
+        /// or load the same name .txt file
+        /// </summary>
         public void TryLoadRtf(string path) {
             if (File.Exists(path)) {
                 LoadFile(path);

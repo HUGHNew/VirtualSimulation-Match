@@ -5,7 +5,8 @@ using System.Windows.Forms;
 using System.Linq;
 
 namespace GUI {
-    public partial class VariableRadioPanel : UserControl,IVariableOptionPanel {
+    [Obsolete]
+    public partial class VariableRadioPanel : UserControl{
         public VariableRadioPanel() {
             InitializeComponent();
         }

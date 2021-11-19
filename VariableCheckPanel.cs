@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI {
-    public class VariableCheckPanel : VariableBasePanel {
+    public class VariableCheckPanel : VariableBasePanel, IVariableOptionPanel {
         [Browsable(true)]
         [Category("Buttons")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Description("Specifies the correct answers start with 1.")]
         public uint[] CorrectButtonItemIndex { get; set; }
-        protected override void ButtonLoad(string path) {
+
+        public void ButtonLoad(string path) {
             char[] sep = { ',' };
             string[] Texts = System.IO.File.ReadAllLines(path);
-            uint[] CorrectAnswers = Texts[0].Split(sep).Select(it=> Convert.ToUInt32(it)).ToArray();
+            uint[] CorrectAnswers = Texts[0].Split(sep).Select(it => Convert.ToUInt32(it)).ToArray();
             if (CorrectButtonItemIndex == null) CorrectButtonItemIndex = CorrectAnswers;
             Buttons = new CheckBox[Texts.Length - 1];
             string CombineText(string[] text) {
@@ -44,8 +45,17 @@ namespace GUI {
         }
 
         public override bool IsCorrect() {
-            throw new NotImplementedException();
+            int idx = 0, max = CorrectButtonItemIndex.Length;
+            if (Buttons.Count(it => it.Checked) != max) return false;// check count
+            int[] SelectItems = new int[max];
+            for(int i = 0; i < Buttons.Length; ++i) {
+                if (Buttons[i].Checked 
+                    && i + 1 != CorrectButtonItemIndex[idx++]) { 
+                    return false;
+                }
+            }return true;
         }
+        public override uint[] GetAnswers() => CorrectButtonItemIndex;
 
         protected CheckBox[] Buttons;
     }
