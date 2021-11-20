@@ -12,6 +12,7 @@
         /// set form status and show itself
         /// </summary>
         void ToShow();
+        void ToShow(System.Drawing.Point location);
         //[Obsolete]
         //void ToShow(MainForm.Status st);
     }

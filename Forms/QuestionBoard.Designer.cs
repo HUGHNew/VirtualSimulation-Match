@@ -150,7 +150,7 @@ namespace GUI {
             this.Controls.Add(this.MainTable);
             this.Name = "QuestionBoard";
             this.Text = "体位性窒息法医学鉴定虚拟仿真实验";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAction);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseAction);
             this.Shown += new System.EventHandler(this.QuestionBoard_Shown);
             this.MainTable.ResumeLayout(false);
             this.ThemeTable.ResumeLayout(false);

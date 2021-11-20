@@ -70,6 +70,11 @@ namespace GUI {
             status = OnStatus();
             this.Show();
         }
+        public void ToShow(Point location) {
+            status = OnStatus();
+            Show();
+            Location = location;
+        }
         private static int BtnText2Idx(string text) {
             switch (text) {
                 case "尸体检验": return 0;

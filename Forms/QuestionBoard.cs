@@ -8,6 +8,7 @@ namespace GUI {
     public partial class QuestionBoard : Form, IVEInter {
         public QuestionBoard() {
             InitializeComponent();
+            AShow = new TransparentLableForm();
         }
         private const uint MaxIdx = 5;
         private readonly VariableBasePanel[] Options = new VariableBasePanel[MaxIdx];
@@ -16,6 +17,7 @@ namespace GUI {
         private readonly Control[] ThemeControl = new Control[3];
         private uint Index = 0;
         private MainForm.Status status;
+        private readonly TransparentLableForm AShow;// show answer
         // copy with the flash problem
         protected override CreateParams CreateParams {
             get {
@@ -33,23 +35,21 @@ namespace GUI {
             status = OnStatus();
             this.Show();
         }
+        public void ToShow(Point location) {
+            status = OnStatus();
+            Show();
+            Location = location;
+        }
         #endregion
         private void ReturnMainPage() {
+            AShow.Hide();
             ReturnPage(MainForm.Status.Main);
         }
         private void ReturnPage(MainForm.Status s) {
             status = s;
             this.Hide();
         }
-        private readonly Font dFont; // default font
-        private Label NFLabelGen(string text) {
-            return new Label {
-                Text = text,
-                TextAlign = ContentAlignment.MiddleCenter,
-                BackColor = Color.Transparent,
-                //Font=dFont,
-            };
-        }
+        //private readonly Font dFont; // default font
 
         private void QuestionBoard_Shown(object sender, EventArgs e) {
             for (int i = 0; i < MaxIdx; ++i) {
@@ -64,6 +64,21 @@ namespace GUI {
             ThemeControl[2] = SubmitBtn;
             MoveToNext();
         }
+        private Point ComputeFeedBackPosition(ref int width) {
+            //Point pOrigin = ThemeTable.Controls[2].Location;
+            int Y = Location.Y+Height-SubmitBtn.Size.Height;
+            int X_offset = ThemeTable.Width - SubmitBtn.Width;
+            width = (X_offset >> 1)+(X_offset>>2);
+            X_offset = (ThemeTable.Width-width) >> 1;
+            int X = Location.X+MenuFlow.Width+X_offset;
+#if DEBUG
+            Console.WriteLine($"ThemeTable.Width:{ThemeTable.Width}");
+            Console.WriteLine($"{X},{Y} offset:{X_offset} width:{width}");
+            Console.WriteLine($"Button:{SubmitBtn.Location}");
+            //MessageBox.Show($"{pOrigin} {X},{Y}");
+#endif
+            return new Point(X, Y);
+        }
         /// <summary>
         /// SubmitStatus
         /// it should be confirm if true
@@ -74,13 +89,24 @@ namespace GUI {
             SubmitBtn.Text = SubmitStatus ? "确定" : "下一题";
             if (SubmitStatus) {
                 ++Index;
+                AShow.Hide();
                 MoveToNext();
             } else if (Index < MaxIdx) {
+                int fd_width = 0;
+                AShow.Location = ComputeFeedBackPosition(ref fd_width);
+                AShow.ReSize(new Size(fd_width, ThemeTable.Controls[2].Height >> 1));
                 if (Options[Index].IsCorrect()) {
-                    MessageBox.Show("答案正确");
+                    //MessageBox.Show("答案正确");
+                    AShow.ContentLoad();
                 } else {
-                    MessageBox.Show("正确答案为：" + Options[Index].GetAnswers().Select(it => (char)(it - 1 + 'A')).ToArrayString());
+                    string result = "正确答案为：" + 
+                        Options[Index].GetAnswers().
+                        Select(it => (char)(it - 1 + 'A')).ToArrayString();
+                    //MessageBox.Show("正确答案为：" + Options[Index].GetAnswers().Select(it => (char)(it - 1 + 'A')).ToArrayString());
+                    AShow.ContentLoad(result,Color.Red);
                 }
+                AShow.ResizeLabel();
+                AShow.Show();
             }
             if (Index > MaxIdx) {
                 ReturnMainPage();
@@ -119,7 +145,7 @@ namespace GUI {
                 it.Size = BlkSize;
             }
         }
-
+        #region Page Jump
         private void JumpContent(object sender, EventArgs e) {
             ReturnPage(MainForm.Status.Appraisal);
         }
@@ -127,8 +153,9 @@ namespace GUI {
         private void JumpCrops(object sender, EventArgs e) {
             ReturnPage(MainForm.Status.Crops);
         }
-        private void CloseAction(object sender, FormClosedEventArgs e) {
+        private void CloseAction(object sender, FormClosingEventArgs e) {
             ReturnMainPage();
         }
+        #endregion
     }
 }

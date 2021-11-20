@@ -74,17 +74,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appraisal.cs">
+    <Compile Include="Forms\Appraisal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Content.cs">
+    <Compile Include="Forms\Content.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Crops.cs">
+    <Compile Include="Forms\Crops.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Crops.Designer.cs">
+    <Compile Include="Forms\Crops.Designer.cs">
       <DependentUpon>Crops.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TransparentLableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TransparentLableForm.Designer.cs">
+      <DependentUpon>TransparentLableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjInterface.cs" />
     <Compile Include="MainForm.cs">
@@ -95,43 +101,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QDesc.cs">
+    <Compile Include="Components\QDesc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="QDesc.Designer.cs">
+    <Compile Include="Components\QDesc.Designer.cs">
       <DependentUpon>QDesc.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuestionBoard.cs">
+    <Compile Include="Forms\QuestionBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuestionBoard.Designer.cs">
+    <Compile Include="Forms\QuestionBoard.Designer.cs">
       <DependentUpon>QuestionBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility.cs" />
-    <Compile Include="VariableBasePanel.cs">
+    <Compile Include="Components\VariableBasePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VariableCheckPanel.cs">
+    <Compile Include="Components\VariableCheckPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VariablePanelFactory.cs" />
-    <Compile Include="VariableRadioPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="VariableRadioPanel.Designer.cs">
-      <DependentUpon>VariableRadioPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VariableSelectPanel.cs">
+    <Compile Include="Components\VariablePanelFactory.cs" />
+    <Compile Include="Components\VariableSelectPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Appraisal.resx">
+    <EmbeddedResource Include="Forms\Appraisal.resx">
       <DependentUpon>Appraisal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Content.resx">
+    <EmbeddedResource Include="Forms\Content.resx">
       <DependentUpon>Content.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Crops.resx">
+    <EmbeddedResource Include="Forms\Crops.resx">
       <DependentUpon>Crops.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransparentLableForm.resx">
+      <DependentUpon>TransparentLableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -146,14 +155,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="QDesc.resx">
+    <EmbeddedResource Include="Components\QDesc.resx">
       <DependentUpon>QDesc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuestionBoard.resx">
+    <EmbeddedResource Include="Forms\QuestionBoard.resx">
       <DependentUpon>QuestionBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VariableRadioPanel.resx">
-      <DependentUpon>VariableRadioPanel.cs</DependentUpon>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GUI_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
