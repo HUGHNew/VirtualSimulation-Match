@@ -36,7 +36,7 @@ namespace GUI {
             this.ToExp_Btn = new System.Windows.Forms.Button();
             this.AppOption_Btn = new System.Windows.Forms.Button();
             this.RetMain_Btn = new System.Windows.Forms.Button();
-            this.RichText_Tbox = new System.Windows.Forms.RichTextBox();
+            this.CropPanel = new System.Windows.Forms.Panel();
             this.MenuPanel.SuspendLayout();
             this.ItemFlow.SuspendLayout();
             this.MenuFlow.SuspendLayout();
@@ -204,18 +204,14 @@ namespace GUI {
             this.RetMain_Btn.UseVisualStyleBackColor = true;
             this.RetMain_Btn.Click += new System.EventHandler(this.Return);
             // 
-            // RichText_Tbox
+            // CropPanel
             // 
-            this.RichText_Tbox.BackColor = System.Drawing.Color.LightCyan;
-            this.RichText_Tbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RichText_Tbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RichText_Tbox.Location = new System.Drawing.Point(151, 0);
-            this.RichText_Tbox.Name = "RichText_Tbox";
-            this.RichText_Tbox.ReadOnly = true;
-            this.RichText_Tbox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RichText_Tbox.Size = new System.Drawing.Size(649, 450);
-            this.RichText_Tbox.TabIndex = 1;
-            this.RichText_Tbox.Text = "";
+            this.CropPanel.BackColor = System.Drawing.Color.Transparent;
+            this.CropPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CropPanel.Location = new System.Drawing.Point(154, 0);
+            this.CropPanel.Name = "CropPanel";
+            this.CropPanel.Size = new System.Drawing.Size(646, 450);
+            this.CropPanel.TabIndex = 2;
             // 
             // Crops
             // 
@@ -223,8 +219,8 @@ namespace GUI {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.Bg;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.RichText_Tbox);
             this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.CropPanel);
             this.Name = "Crops";
             this.Text = "尸体解剖";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAction);
@@ -250,6 +246,6 @@ namespace GUI {
         private System.Windows.Forms.Button ToExp_Btn;
         private System.Windows.Forms.Button AppOption_Btn;
         private System.Windows.Forms.Button RetMain_Btn;
-        private System.Windows.Forms.RichTextBox RichText_Tbox;
+        private System.Windows.Forms.Panel CropPanel;
     }
 }

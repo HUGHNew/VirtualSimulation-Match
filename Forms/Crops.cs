@@ -6,6 +6,7 @@ namespace GUI {
     public partial class Crops : Form, IVEInter {
         public Crops() {
             InitializeComponent();
+            //Initialzation();
             MoveSelectedItem();
         }
         #region Panels Layout and Resize
@@ -47,22 +48,32 @@ namespace GUI {
         }
         #endregion
         private void TextLoad(object sender, EventArgs e) {
-            //MessageBox.Show(Properties.Resources.post_mortem);
             status = MainForm.Status.Crops;
-            Contents[0] = Properties.Resources.post_mortem;
-            Contents[1] = Properties.Resources.organ;
-            Contents[2] = Properties.Resources.tissue;
-            Contents[3] = Properties.Resources.drug;
-            Contents[4] = Properties.Resources.pathology;
-            Contents[5] = Properties.Resources.analysis;
-            RichText_Tbox.Text = Contents[currItem];
+            for (int i = 0; i < descriptions.Length; ++i) {
+                descriptions[i]= new RichTextBox { Dock = DockStyle.Fill };
+                descriptions[i].Font = new Font(descriptions[i].Font.Name, 24, GraphicsUnit.Pixel);
+                descriptions[i].BackColor = Color.FromArgb(255, 169, 221, 219);
+            }
+            descriptions[0].LoadFile("results/mortem.rtf", RichTextBoxStreamType.RichText);
+            descriptions[1].Text = Properties.Resources.organ;
+            descriptions[2].LoadFile("results/tissue.rtf");
+            descriptions[3].Text = Properties.Resources.drug;
+            descriptions[4].Text = Properties.Resources.pathology;
+            descriptions[5].Text = Properties.Resources.analysis;
+            //RichText_Tbox.Text = Contents[currItem];
+            ShowContent(currItem);
         }
-        private readonly string[] Contents = new string[6];
+        private readonly RichTextBox[] descriptions = new RichTextBox[6];
         private MainForm.Status status;
         private int prevItem=-1;
         private int currItem=0;
         private void ShowContent(int index) {
-            RichText_Tbox.Text = Contents[index];
+            SuspendLayout();
+
+            CropPanel.Controls.Clear();
+            CropPanel.Controls.Add(descriptions[index]);
+
+            ResumeLayout(true);
         }
         #region interface implement
         public MainForm.Status GetStatus() => status;
@@ -96,10 +107,14 @@ namespace GUI {
             (ItemFlow.Controls[prevItem] as Button).BackColor = Utility.Tranparent;
         }
         private void Btn_Click(object sender, EventArgs e) {
+            SuspendLayout();
+
             prevItem = currItem;
             currItem = BtnText2Idx((sender as Button).Text);
             MoveSelectedItem();
             ShowContent(currItem);
+
+            ResumeLayout(true);
         }
 
 

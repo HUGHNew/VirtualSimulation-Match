@@ -133,6 +133,9 @@
   <data name="Fight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fight_trans" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fight_T0.5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="finishExam" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\finishExam.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -147,15 +150,6 @@
   </data>
   <data name="post_mortem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\post-mortem.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="Q2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Q2_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Q2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Q2_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Q3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Q3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tissue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tissue.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

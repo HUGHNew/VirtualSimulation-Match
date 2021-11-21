@@ -10,6 +10,17 @@ namespace GUI {
             InitializeComponent();
             AShow = new TransparentLableForm();
             QuestionBtn.BackColor = Utility.SelectedColor;
+            for (int i = 0; i < MaxIdx; ++i) {
+                Themes[i] = new QDesc { Dock = DockStyle.Fill };
+                Themes[i].TryLoadRtf($"questions/Q{i + 1}desc.rtf");
+
+                string csv = $"questions/Q{i + 1}.csv";
+                Options[i] = VariablePanelFactory.Create(csv);
+                Options[i].FlowDirection = FlowDirection.LeftToRight;
+                Options[i].LoadContent(csv);
+            }
+            ThemeControl[2] = SubmitBtn;
+            MoveToNext();
         }
         private const uint MaxIdx = 5;
         private readonly VariableBasePanel[] Options = new VariableBasePanel[MaxIdx];
@@ -52,19 +63,6 @@ namespace GUI {
         }
         //private readonly Font dFont; // default font
 
-        private void QuestionBoard_Shown(object sender, EventArgs e) {
-            for (int i = 0; i < MaxIdx; ++i) {
-                Themes[i] = new QDesc { Dock = DockStyle.Fill };
-                Themes[i].TryLoadRtf($"questions/Q{i + 1}desc.rtf");
-
-                string csv = $"questions/Q{i + 1}.csv";
-                Options[i] = VariablePanelFactory.Create(csv);
-                Options[i].FlowDirection = FlowDirection.LeftToRight;
-                Options[i].LoadContent(csv);
-            }
-            ThemeControl[2] = SubmitBtn;
-            MoveToNext();
-        }
         private Point ComputeFeedBackPosition(ref int width) {
             //Point pOrigin = ThemeTable.Controls[2].Location;
             int Y = Location.Y+Height-SubmitBtn.Size.Height;
@@ -110,12 +108,12 @@ namespace GUI {
                 AShow.Show();
             }
             if (Index > MaxIdx) {
-                ReturnMainPage();
+                ReturnPage(MainForm.Status.Appraisal);
             }
             if (Index == MaxIdx) {
                 ++Index;
                 MoveToNext();
-                SubmitBtn.Text = "返回主页";
+                SubmitBtn.Text = "查看鉴定意见";
             }
             SubmitStatus = !SubmitStatus;
         }
@@ -148,7 +146,7 @@ namespace GUI {
         }
         #region Page Jump
         private void JumpContent(object sender, EventArgs e) {
-            ReturnPage(MainForm.Status.Appraisal);
+            ReturnPage(MainForm.Status.Issue);
         }
 
         private void JumpCrops(object sender, EventArgs e) {

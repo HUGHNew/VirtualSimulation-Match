@@ -6,11 +6,12 @@ namespace GUI {
     public class Content : Form, IVEInter {
         private Button RetMenu;
         private Button Anomaly;
-        private TextBox CText;
+        private Button QABtn;
+        private Label DetailLabel;
         private FlowLayoutPanel MenuFlowLayoutPanel;
         public Content() {
             InitializeComponent();
-            this.CText.Text = Properties.Resources.content;
+            this.DetailLabel.Text = Properties.Resources.content;
             status = MainForm.Status.Issue;
         }
 
@@ -18,7 +19,8 @@ namespace GUI {
             this.MenuFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.RetMenu = new System.Windows.Forms.Button();
             this.Anomaly = new System.Windows.Forms.Button();
-            this.CText = new System.Windows.Forms.TextBox();
+            this.QABtn = new System.Windows.Forms.Button();
+            this.DetailLabel = new System.Windows.Forms.Label();
             this.MenuFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -27,6 +29,7 @@ namespace GUI {
             this.MenuFlowLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.MenuFlowLayoutPanel.Controls.Add(this.RetMenu);
             this.MenuFlowLayoutPanel.Controls.Add(this.Anomaly);
+            this.MenuFlowLayoutPanel.Controls.Add(this.QABtn);
             this.MenuFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.MenuFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -54,31 +57,42 @@ namespace GUI {
             this.Anomaly.UseVisualStyleBackColor = true;
             this.Anomaly.Click += new System.EventHandler(this.JumpAnalyze);
             // 
-            // CText
+            // QABtn
             // 
-            this.CText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CText.Location = new System.Drawing.Point(122, 0);
-            this.CText.Multiline = true;
-            this.CText.Name = "CText";
-            this.CText.ReadOnly = true;
-            this.CText.Size = new System.Drawing.Size(342, 100);
-            this.CText.TabIndex = 2;
+            this.QABtn.Location = new System.Drawing.Point(3, 93);
+            this.QABtn.Name = "QABtn";
+            this.QABtn.Size = new System.Drawing.Size(111, 38);
+            this.QABtn.TabIndex = 2;
+            this.QABtn.Text = "开始答题";
+            this.QABtn.UseVisualStyleBackColor = true;
+            this.QABtn.Click += new System.EventHandler(this.JumpQA);
+            // 
+            // DetailLabel
+            // 
+            this.DetailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.DetailLabel.BackColor = System.Drawing.Color.Transparent;
+            this.DetailLabel.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(134)));
+            this.DetailLabel.ForeColor = System.Drawing.Color.Black;
+            this.DetailLabel.Location = new System.Drawing.Point(129, 13);
+            this.DetailLabel.Name = "DetailLabel";
+            this.DetailLabel.Size = new System.Drawing.Size(323, 389);
+            this.DetailLabel.TabIndex = 2;
             // 
             // Content
             // 
-            this.BackgroundImage = global::GUI.Properties.Resources.Fight;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::GUI.Properties.Resources.fight_trans;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(464, 411);
-            this.Controls.Add(this.CText);
+            this.Controls.Add(this.DetailLabel);
             this.Controls.Add(this.MenuFlowLayoutPanel);
+            this.DoubleBuffered = true;
             this.Name = "Content";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "案情资料";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAction);
             this.MenuFlowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -112,6 +126,10 @@ namespace GUI {
 
         private void JumpAnalyze(object sender, EventArgs e) {
             ReturnProc(MainForm.Status.Crops);
+        }
+
+        private void JumpQA(object sender, EventArgs e) {
+            ReturnProc(MainForm.Status.Running);
         }
     }
 }

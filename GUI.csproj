@@ -209,15 +209,6 @@
     <None Include="Resources\tissue.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Q2_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Q2_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Q3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\finishExam.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +222,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fight_T0.5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

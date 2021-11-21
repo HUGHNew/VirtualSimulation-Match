@@ -113,6 +113,16 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fight_trans {
+            get {
+                object obj = ResourceManager.GetObject("fight_trans", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 恭喜你完成所有题目.
         /// </summary>
         internal static string finishExam {
@@ -167,36 +177,6 @@ namespace GUI.Properties {
         internal static string post_mortem {
             get {
                 return ResourceManager.GetString("post_mortem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Q2_1 {
-            get {
-                object obj = ResourceManager.GetObject("Q2_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Q2_2 {
-            get {
-                object obj = ResourceManager.GetObject("Q2_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Q3 {
-            get {
-                object obj = ResourceManager.GetObject("Q3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

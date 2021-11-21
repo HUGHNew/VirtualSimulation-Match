@@ -14,7 +14,8 @@ namespace GUI {
             //    Location = new System.Drawing.Point(100, 100)
             //};
             //Application.Run(tf);
-            //Application.Run(new TestForm());
+            //Application.Run(new Appraisal());
+            //Application.Run(new Content());
             Application.Run(new MainForm());
             //Application.Run(new QuestionBoard());
             //Application.Run(new Crops());

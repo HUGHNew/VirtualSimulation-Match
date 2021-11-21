@@ -102,7 +102,8 @@ namespace GUI {
             Main, // main page
             Crops, // anatomy
             Appraisal, // 
-            Issue // case details
+            Issue, // case details
+            //Content
         };
         public void Sleep(int millisec) => System.Threading.Thread.Sleep(millisec);
         private Content Issue;
@@ -136,6 +137,10 @@ namespace GUI {
 
         private void CropsJump(object sender, EventArgs e) {
             SwitchForm(Status.Crops);
+        }
+
+        private void ExProcessClick(object sender, EventArgs e) {
+            SwitchForm(Status.Issue);
         }
     }
 }
