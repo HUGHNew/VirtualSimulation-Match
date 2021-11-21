@@ -47,19 +47,19 @@ namespace GUI {
         /// <returns>the form relevant to status or new one if disposed
         /// null if it's Main
         /// </returns>
-        private IVEInter GetAvailableForm(Status need_status) {
+        private IVEInter GetAvailableForm(Status need_status,bool newForm=true) {
             switch (need_status) {
                 case Status.Issue:
-                    if (Issue.IsDisposed) { Issue = new Content(); }
+                    if (Issue.IsDisposed&&newForm) { Issue = new Content(); }
                     return Issue;
                 case Status.Appraisal:
-                    if (app.IsDisposed) { app = new Appraisal(); }
+                    if (app.IsDisposed && newForm) { app = new Appraisal(); }
                     return app;
                 case Status.Crops:
-                    if (app.IsDisposed) { app = new Appraisal(); }
+                    if (app.IsDisposed && newForm) { app = new Appraisal(); }
                     return crops;
                 case Status.Running:
-                    if (board.IsDisposed) { board = new QuestionBoard(); }
+                    if (board.IsDisposed && newForm) { board = new QuestionBoard(); }
                     return board;
                 default:
                     return null;
@@ -67,15 +67,16 @@ namespace GUI {
         }
         private void Polling(object sender, EventArgs e) {
             Status next; // if subform is on
-            IVEInter inter = GetAvailableForm(CurrentForm);
+            IVEInter inter = GetAvailableForm(CurrentForm,false);
             if (inter != null) {
                 LastLoc = (inter as Form).Location;
-            }
-            if (inter != null) {
                 next = inter.GetStatus();
+#if DEBUG
+                Console.WriteLine($"Current:{CurrentForm} next:{next}");
+#endif
                 if (next == Status.Main) {
-                    CurrentForm = Status.Main;
                     Location = LastLoc;
+                    CurrentForm = next;
                     this.Show(); return;
                 } else if (next != inter.OnStatus()) {
                     // this form may be disposed
@@ -83,6 +84,9 @@ namespace GUI {
                     // jump to another sub form
                     SwitchForm(next);
                 }
+            } else {
+                //if (!Visible) { this.Show();MessageBox.Show("Not Visible"); }
+                // seems it can't reach here
             }
         }
         private void SwitchForm(Status s) {
@@ -90,8 +94,7 @@ namespace GUI {
             CurrentForm = s;
             IVEInter form = GetAvailableForm(s);
             if (form != null) {
-                form.ToShow();
-                (form as Form).Location = Location;
+                form.ToShow(Location);
             }
         }
         public enum Status {
@@ -99,7 +102,8 @@ namespace GUI {
             Main, // main page
             Crops, // anatomy
             Appraisal, // 
-            Issue // case details
+            Issue, // case details
+            //Content
         };
         public void Sleep(int millisec) => System.Threading.Thread.Sleep(millisec);
         private Content Issue;
@@ -110,6 +114,7 @@ namespace GUI {
         private Timer timer;
         private Point LastLoc;
         private Status CurrentForm = Status.Main;
+        
         private void MainLoad(object sender, EventArgs e) {
             // set QA pos
             // init Issue and so on
@@ -132,6 +137,10 @@ namespace GUI {
 
         private void CropsJump(object sender, EventArgs e) {
             SwitchForm(Status.Crops);
+        }
+
+        private void ExProcessClick(object sender, EventArgs e) {
+            SwitchForm(Status.Issue);
         }
     }
 }

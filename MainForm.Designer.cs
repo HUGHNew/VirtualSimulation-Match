@@ -29,6 +29,7 @@ namespace GUI {
             this.Anatomy = new System.Windows.Forms.Button();
             this.Appraisal = new System.Windows.Forms.Button();
             this.QA = new System.Windows.Forms.Button();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.MainButtonFlowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,13 +78,26 @@ namespace GUI {
             // 
             // QA
             // 
+            this.QA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.QA.Location = new System.Drawing.Point(263, 189);
             this.QA.Name = "QA";
             this.QA.Size = new System.Drawing.Size(230, 69);
             this.QA.TabIndex = 1;
             this.QA.Text = "开始实验";
             this.QA.UseVisualStyleBackColor = true;
-            this.QA.Click += new System.EventHandler(this.QAEnter);
+            this.QA.Click += new System.EventHandler(this.ExProcessClick);
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TitleLabel.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TitleLabel.Location = new System.Drawing.Point(142, 126);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(527, 33);
+            this.TitleLabel.TabIndex = 2;
+            this.TitleLabel.Text = "体位性窒息法医学鉴定虚拟仿真实验";
             // 
             // MainForm
             // 
@@ -92,6 +106,7 @@ namespace GUI {
             this.BackgroundImage = global::GUI.Properties.Resources.Bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.QA);
             this.Controls.Add(this.MainButtonFlowPanel);
             this.Name = "MainForm";
@@ -100,6 +115,7 @@ namespace GUI {
             this.Resize += new System.EventHandler(this.MainResize);
             this.MainButtonFlowPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -109,6 +125,7 @@ namespace GUI {
         private System.Windows.Forms.Button Anatomy;
         private System.Windows.Forms.Button Appraisal;
         private System.Windows.Forms.Button QA;
+        private System.Windows.Forms.Label TitleLabel;
     }
 }
 

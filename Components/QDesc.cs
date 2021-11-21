@@ -13,9 +13,9 @@ namespace GUI {
         public QDesc() {
             Initialization();
         }
-        public QDesc(string content) {
+        public QDesc(string content,int lineCount=5) {
             Initialization();
-            RichTextBox.Text = NewLine(5) + content;
+            RichTextBox.Text = NewLine(lineCount) + content;
         }
         public static string NewLine(int count) {
             return new String('\n', count);
