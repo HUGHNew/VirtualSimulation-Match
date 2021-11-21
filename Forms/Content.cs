@@ -40,7 +40,7 @@ namespace GUI {
             this.RetMenu.Name = "RetMenu";
             this.RetMenu.Size = new System.Drawing.Size(111, 40);
             this.RetMenu.TabIndex = 0;
-            this.RetMenu.Text = "返回上级";
+            this.RetMenu.Text = "返回主页";
             this.RetMenu.UseVisualStyleBackColor = true;
             this.RetMenu.Click += new System.EventHandler(this.Return);
             // 

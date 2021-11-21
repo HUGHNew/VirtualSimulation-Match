@@ -6,6 +6,7 @@ namespace GUI {
     public partial class Crops : Form, IVEInter {
         public Crops() {
             InitializeComponent();
+            MoveSelectedItem();
         }
         #region Panels Layout and Resize
         private void PanelLayout(Panel p, bool TopDown) {
@@ -54,14 +55,16 @@ namespace GUI {
             Contents[3] = Properties.Resources.drug;
             Contents[4] = Properties.Resources.pathology;
             Contents[5] = Properties.Resources.analysis;
-            RichText_Tbox.Text = Contents[0];
+            RichText_Tbox.Text = Contents[currItem];
         }
         private readonly string[] Contents = new string[6];
         private MainForm.Status status;
+        private int prevItem=-1;
+        private int currItem=0;
         private void ShowContent(int index) {
             RichText_Tbox.Text = Contents[index];
         }
-
+        #region interface implement
         public MainForm.Status GetStatus() => status;
 
         public MainForm.Status OnStatus() => MainForm.Status.Crops;
@@ -75,6 +78,7 @@ namespace GUI {
             Show();
             Location = location;
         }
+        #endregion
         private static int BtnText2Idx(string text) {
             switch (text) {
                 case "尸体检验": return 0;
@@ -86,8 +90,16 @@ namespace GUI {
                 default: return 0;
             }
         }
+        private void MoveSelectedItem() {
+            (ItemFlow.Controls[currItem] as Button).BackColor = Utility.SelectedColor;
+            if (prevItem < 0) return;
+            (ItemFlow.Controls[prevItem] as Button).BackColor = Utility.Tranparent;
+        }
         private void Btn_Click(object sender, EventArgs e) {
-            ShowContent(BtnText2Idx((sender as Button).Text));
+            prevItem = currItem;
+            currItem = BtnText2Idx((sender as Button).Text);
+            MoveSelectedItem();
+            ShowContent(currItem);
         }
 
 

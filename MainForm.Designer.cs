@@ -77,6 +77,7 @@ namespace GUI {
             // 
             // QA
             // 
+            this.QA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.QA.Location = new System.Drawing.Point(263, 189);
             this.QA.Name = "QA";
             this.QA.Size = new System.Drawing.Size(230, 69);

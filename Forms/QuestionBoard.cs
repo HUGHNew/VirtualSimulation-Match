@@ -9,6 +9,7 @@ namespace GUI {
         public QuestionBoard() {
             InitializeComponent();
             AShow = new TransparentLableForm();
+            QuestionBtn.BackColor = Utility.SelectedColor;
         }
         private const uint MaxIdx = 5;
         private readonly VariableBasePanel[] Options = new VariableBasePanel[MaxIdx];

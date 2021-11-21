@@ -26,13 +26,13 @@ namespace GUI {
         private void InitializeComponent() {
             this.MenuPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.MenuFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.BodyCheck_Btn = new System.Windows.Forms.Button();
             this.OrganCheck_Btn = new System.Windows.Forms.Button();
             this.TissueCheck_Btn = new System.Windows.Forms.Button();
             this.DrugCheck_Btn = new System.Windows.Forms.Button();
             this.Pathological_Btn = new System.Windows.Forms.Button();
             this.AnalyDesc_Btn = new System.Windows.Forms.Button();
+            this.MenuFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.ToExp_Btn = new System.Windows.Forms.Button();
             this.AppOption_Btn = new System.Windows.Forms.Button();
             this.RetMain_Btn = new System.Windows.Forms.Button();
@@ -82,6 +82,84 @@ namespace GUI {
             this.ItemFlow.Layout += new System.Windows.Forms.LayoutEventHandler(this.ItemLayout);
             this.ItemFlow.Resize += new System.EventHandler(this.ItemResize);
             // 
+            // BodyCheck_Btn
+            // 
+            this.BodyCheck_Btn.FlatAppearance.BorderSize = 0;
+            this.BodyCheck_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.BodyCheck_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BodyCheck_Btn.Location = new System.Drawing.Point(3, 3);
+            this.BodyCheck_Btn.Name = "BodyCheck_Btn";
+            this.BodyCheck_Btn.Size = new System.Drawing.Size(138, 26);
+            this.BodyCheck_Btn.TabIndex = 0;
+            this.BodyCheck_Btn.Text = "尸体检验";
+            this.BodyCheck_Btn.UseVisualStyleBackColor = true;
+            this.BodyCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
+            // OrganCheck_Btn
+            // 
+            this.OrganCheck_Btn.FlatAppearance.BorderSize = 0;
+            this.OrganCheck_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.OrganCheck_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OrganCheck_Btn.Location = new System.Drawing.Point(3, 35);
+            this.OrganCheck_Btn.Name = "OrganCheck_Btn";
+            this.OrganCheck_Btn.Size = new System.Drawing.Size(138, 26);
+            this.OrganCheck_Btn.TabIndex = 1;
+            this.OrganCheck_Btn.Text = "器官检验";
+            this.OrganCheck_Btn.UseVisualStyleBackColor = true;
+            this.OrganCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
+            // TissueCheck_Btn
+            // 
+            this.TissueCheck_Btn.FlatAppearance.BorderSize = 0;
+            this.TissueCheck_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.TissueCheck_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TissueCheck_Btn.Location = new System.Drawing.Point(3, 67);
+            this.TissueCheck_Btn.Name = "TissueCheck_Btn";
+            this.TissueCheck_Btn.Size = new System.Drawing.Size(138, 26);
+            this.TissueCheck_Btn.TabIndex = 2;
+            this.TissueCheck_Btn.Text = "组织检查";
+            this.TissueCheck_Btn.UseVisualStyleBackColor = true;
+            this.TissueCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
+            // DrugCheck_Btn
+            // 
+            this.DrugCheck_Btn.FlatAppearance.BorderSize = 0;
+            this.DrugCheck_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.DrugCheck_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DrugCheck_Btn.Location = new System.Drawing.Point(3, 99);
+            this.DrugCheck_Btn.Name = "DrugCheck_Btn";
+            this.DrugCheck_Btn.Size = new System.Drawing.Size(138, 26);
+            this.DrugCheck_Btn.TabIndex = 3;
+            this.DrugCheck_Btn.Text = "毒物分析";
+            this.DrugCheck_Btn.UseVisualStyleBackColor = true;
+            this.DrugCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
+            // Pathological_Btn
+            // 
+            this.Pathological_Btn.FlatAppearance.BorderSize = 0;
+            this.Pathological_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.Pathological_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Pathological_Btn.Location = new System.Drawing.Point(3, 131);
+            this.Pathological_Btn.Name = "Pathological_Btn";
+            this.Pathological_Btn.Size = new System.Drawing.Size(138, 26);
+            this.Pathological_Btn.TabIndex = 4;
+            this.Pathological_Btn.Text = "病理诊断";
+            this.Pathological_Btn.UseVisualStyleBackColor = true;
+            this.Pathological_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
+            // AnalyDesc_Btn
+            // 
+            this.AnalyDesc_Btn.FlatAppearance.BorderSize = 0;
+            this.AnalyDesc_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.AnalyDesc_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AnalyDesc_Btn.Location = new System.Drawing.Point(3, 163);
+            this.AnalyDesc_Btn.Name = "AnalyDesc_Btn";
+            this.AnalyDesc_Btn.Size = new System.Drawing.Size(138, 26);
+            this.AnalyDesc_Btn.TabIndex = 5;
+            this.AnalyDesc_Btn.Text = "分析说明";
+            this.AnalyDesc_Btn.UseVisualStyleBackColor = true;
+            this.AnalyDesc_Btn.Click += new System.EventHandler(this.Btn_Click);
+            // 
             // MenuFlow
             // 
             this.MenuFlow.Controls.Add(this.ToExp_Btn);
@@ -95,66 +173,6 @@ namespace GUI {
             this.MenuFlow.TabIndex = 1;
             this.MenuFlow.Layout += new System.Windows.Forms.LayoutEventHandler(this.MenuLayout);
             this.MenuFlow.Resize += new System.EventHandler(this.MenuResize);
-            // 
-            // BodyCheck_Btn
-            // 
-            this.BodyCheck_Btn.Location = new System.Drawing.Point(3, 3);
-            this.BodyCheck_Btn.Name = "BodyCheck_Btn";
-            this.BodyCheck_Btn.Size = new System.Drawing.Size(138, 26);
-            this.BodyCheck_Btn.TabIndex = 0;
-            this.BodyCheck_Btn.Text = "尸体检验";
-            this.BodyCheck_Btn.UseVisualStyleBackColor = true;
-            this.BodyCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // OrganCheck_Btn
-            // 
-            this.OrganCheck_Btn.Location = new System.Drawing.Point(3, 35);
-            this.OrganCheck_Btn.Name = "OrganCheck_Btn";
-            this.OrganCheck_Btn.Size = new System.Drawing.Size(138, 26);
-            this.OrganCheck_Btn.TabIndex = 1;
-            this.OrganCheck_Btn.Text = "器官检验";
-            this.OrganCheck_Btn.UseVisualStyleBackColor = true;
-            this.OrganCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // TissueCheck_Btn
-            // 
-            this.TissueCheck_Btn.Location = new System.Drawing.Point(3, 67);
-            this.TissueCheck_Btn.Name = "TissueCheck_Btn";
-            this.TissueCheck_Btn.Size = new System.Drawing.Size(138, 26);
-            this.TissueCheck_Btn.TabIndex = 2;
-            this.TissueCheck_Btn.Text = "组织检查";
-            this.TissueCheck_Btn.UseVisualStyleBackColor = true;
-            this.TissueCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // DrugCheck_Btn
-            // 
-            this.DrugCheck_Btn.Location = new System.Drawing.Point(3, 99);
-            this.DrugCheck_Btn.Name = "DrugCheck_Btn";
-            this.DrugCheck_Btn.Size = new System.Drawing.Size(138, 26);
-            this.DrugCheck_Btn.TabIndex = 3;
-            this.DrugCheck_Btn.Text = "毒物分析";
-            this.DrugCheck_Btn.UseVisualStyleBackColor = true;
-            this.DrugCheck_Btn.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // Pathological_Btn
-            // 
-            this.Pathological_Btn.Location = new System.Drawing.Point(3, 131);
-            this.Pathological_Btn.Name = "Pathological_Btn";
-            this.Pathological_Btn.Size = new System.Drawing.Size(138, 26);
-            this.Pathological_Btn.TabIndex = 4;
-            this.Pathological_Btn.Text = "病理诊断";
-            this.Pathological_Btn.UseVisualStyleBackColor = true;
-            this.Pathological_Btn.Click += new System.EventHandler(this.Btn_Click);
-            // 
-            // AnalyDesc_Btn
-            // 
-            this.AnalyDesc_Btn.Location = new System.Drawing.Point(3, 163);
-            this.AnalyDesc_Btn.Name = "AnalyDesc_Btn";
-            this.AnalyDesc_Btn.Size = new System.Drawing.Size(138, 26);
-            this.AnalyDesc_Btn.TabIndex = 5;
-            this.AnalyDesc_Btn.Text = "分析说明";
-            this.AnalyDesc_Btn.UseVisualStyleBackColor = true;
-            this.AnalyDesc_Btn.Click += new System.EventHandler(this.Btn_Click);
             // 
             // ToExp_Btn
             // 
