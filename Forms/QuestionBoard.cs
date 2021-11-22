@@ -158,6 +158,8 @@ namespace GUI {
             ReturnPage(MainForm.Status.Crops);
         }
         private void CloseAction(object sender, FormClosingEventArgs e) {
+            var result=MessageBox.Show(MainForm.ExitTips, "退出系统提示", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK) { } else { e.Cancel = true; }
             ReturnMainPage();
         }
         #endregion

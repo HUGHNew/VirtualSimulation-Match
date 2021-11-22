@@ -114,6 +114,8 @@ namespace GUI {
         private Timer timer;
         private Point LastLoc;
         private Status CurrentForm = Status.Main;
+        public const string Experiment = "体位性窒息法医学鉴定虚拟仿真实验";
+        public const string ExitTips = "是否退出"+Experiment+"?";
         
         private void MainLoad(object sender, EventArgs e) {
             // set QA pos
