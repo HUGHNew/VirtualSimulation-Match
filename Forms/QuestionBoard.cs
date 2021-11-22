@@ -7,8 +7,11 @@ using System.Windows.Forms;
 namespace GUI {
     public partial class QuestionBoard : Form, IVEInter {
         public QuestionBoard() {
+            Initialization();
+        }
+        private void Initialization() {
             InitializeComponent();
-            AShow = new TransparentLableForm();
+            SuspendLayout();
             QuestionBtn.BackColor = Utility.SelectedColor;
             for (int i = 0; i < MaxIdx; ++i) {
                 Themes[i] = new QDesc { Dock = DockStyle.Fill };
@@ -21,6 +24,8 @@ namespace GUI {
             }
             ThemeControl[2] = SubmitBtn;
             MoveToNext();
+            ResumeLayout(false);
+
         }
         private const uint MaxIdx = 5;
         private readonly VariableBasePanel[] Options = new VariableBasePanel[MaxIdx];
@@ -29,7 +34,7 @@ namespace GUI {
         private readonly Control[] ThemeControl = new Control[3];
         private uint Index = 0;
         private MainForm.Status status;
-        private readonly TransparentLableForm AShow;// show answer
+        private readonly TransparentLableForm AShow=new TransparentLableForm();// show answer
         // copy with the flash problem
         protected override CreateParams CreateParams {
             get {
